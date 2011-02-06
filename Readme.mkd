@@ -1,0 +1,46 @@
+eassl
+====================
+EaSSL is a library aimed at making openSSL certificate generation and management easier and more ruby-ish.
+
+Patch from https://github.com/openrain/eassl-fix applied onto source of eassl-0.1.1643 from rubyforge, jeweler-ized, and switched from MD5 to SHA1 hash for CSR signing
+
+Ruby license, inherited from the rubyforge project
+
+Installation
+------------
+    gem install pogodan-eassl
+    
+Or bundler:
+    gem 'eassl', :git => 'git://github.com/pogodan/eassl.git'
+
+Use
+-------------
+Generating a CSR and private key:
+    options = {
+      :department     => 'web sites',
+      :common_name    => 'www.mydomain.com',
+      :organization,  => 'My Org'
+      :email          => 'test@test.com', 
+      :city           => 'Fargo',
+      :state          => 'North Dakota',
+      :country        => 'USA'
+    }
+
+    ea_key  = EaSSL::Key.new
+    ea_name = EaSSL::CertificateName.new(options)
+    ea_csr  = EaSSL::SigningRequest.new(:name => ea_name, :key => ea_key)
+
+    csr = ea_csr.ssl.to_s
+    key = ea_key.private_key.to_s
+
+Contributing
+-------------
+(boilerplate Jeweler text)
+
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
+* Fork the project
+* Start a feature/bugfix branch
+* Commit and push until you are happy with your contribution
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
