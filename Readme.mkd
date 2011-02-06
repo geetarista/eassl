@@ -8,9 +8,7 @@ Ruby license, inherited from the rubyforge project
 
 Installation
 ------------
-    gem install pogodan-eassl
-    
-Or bundler:
+We recommend installing with Bundler:
     gem 'eassl', :git => 'git://github.com/pogodan/eassl.git'
 
 Use
