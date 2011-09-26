@@ -25,7 +25,8 @@ module EaSSL
     
     def ssl
       unless @ssl
-        $stderr.puts "Generating #{@options[:bits]} bit key\n"  # <Should use some kind of logger on this>
+        # <Should use some kind of logger on this>
+        # $stderr.puts "Generating #{@options[:bits]} bit key\n"
         @ssl = OpenSSL::PKey::RSA::new(@options[:bits])
       end
       @ssl
